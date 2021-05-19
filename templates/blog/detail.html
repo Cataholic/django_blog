@@ -1,45 +1,41 @@
 {% extends 'base.html' %}
-
 {% block main %}
     <article class="post post-{{ post.pk }}">
-      <header class="entry-header">
-        <h1 class="entry-title">{{ post.title }}</h1>
-        <div class="entry-meta">
-          <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
-          <span class="post-date"><a href="#"><time class="entry-date"
-                                                    datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
-          <span class="post-author"><a href="#">{{ post.author }}</a></span>
-          <span class="comments-link"><a href="#">4 评论</a></span>
-          <span class="views-count"><a href="#">588 阅读</a></span>
+        <header class="entry-header">
+            <h1 class="entry-title">{{ post.title }}</h1>
+            <div class="entry-meta">
+                <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
+                <span class="post-date"><a href="#"><time class="entry-date"
+                                                          datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
+                <span class="post-author"><a href="#">{{ post.author }}</a></span>
+                <span class="comments-link"><a href="#">4 评论</a></span>
+                <span class="views-count"><a href="#">588 阅读</a></span>
+            </div>
+        </header>
+        <div class="entry-content clearfix">
+            {{ post.body | safe }}
         </div>
-      </header>
-      <div class="entry-content clearfix">
-        {{ post.body }}
-      </div>
     </article>
     <section class="comment-area">
-      ...
+        ...
     </section>
+
+    <body>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+    </script>
+    </body>
 {% endblock main %}
 {% block toc %}
-    <div class="widget widget-content">
-        <h3 class="widget-title">文章目录</h3>
-        <ul>
-            <li>
-                <a href="#">教程特点</a>
-            </li>
-            <li>
-                <a href="#">谁适合这个教程</a>
-            </li>
-            <li>
-                <a href="#">在线预览</a>
-            </li>
-            <li>
-                <a href="#">资源列表</a>
-            </li>
-            <li>
-                <a href="#">获取帮助</a>
-            </li>
-        </ul>
-    </div>
+    {% if post.toc %}
+        <div class="widget widget-content">
+            <h3 class="widget-title">文章目录</h3>
+            <ul>
+            {{ post.toc | safe }}
+            </ul>
+        </div>
+    {% endif %}
 {% endblock toc %}
