@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load comment_extras %}
 {% block main %}
     <article class="post post-{{ post.pk }}">
         <header class="entry-header">
@@ -17,7 +18,11 @@
         </div>
     </article>
     <section class="comment-area">
-        ...
+        <h3>发表评论</h3>
+        {% show_comment_form post %}
+        <div class="comment-list-panel">
+            {% show_comments post %}
+        </div>
     </section>
 
     <body>
@@ -39,3 +44,4 @@
         </div>
     {% endif %}
 {% endblock toc %}
+
