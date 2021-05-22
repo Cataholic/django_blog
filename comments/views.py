@@ -6,7 +6,7 @@ from .form import CommentForm
 from blog.models import Post
 
 
-# @require_POST
+@require_POST
 def comment(request, pk):
     post = get_object_or_404(Post, pk=pk)
     form = CommentForm(request.POST)
