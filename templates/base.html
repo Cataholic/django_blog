@@ -97,3 +97,9 @@
         </div>
     {% endfor %}
 {% endif %}
+
+
+<form role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
+    <input type="search" name="s" placeholder="搜索" required>
+    <button type="submit"><span class="ion-ios-search-strong"></span> </button>
+</form>
