@@ -53,6 +53,11 @@
       padding-left: 10px;
       white-space: pre;
     }
+
+    /* 搜索关键词高亮 */
+    span.highlighted {
+      color: red;
+    }
   </style>
 </head>
 
@@ -99,7 +104,7 @@
 {% endif %}
 
 
-<form role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
+<form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
     <input type="search" name="s" placeholder="搜索" required>
     <button type="submit"><span class="ion-ios-search-strong"></span> </button>
 </form>
